@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tuhin Basu</title>
+<meta name="description" content="Personal site of Tuhin Basu, MSE student in Mechanical Engineering at Johns Hopkins University, working on visuotactile sensing and robotic manipulation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:  #F2F2EE;
+  --ink:    #191C17;
+  --muted:  #63695F;
+  --rule:   #D8D9D0;
+  --signal: #0047AB;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --text:    "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:  #14170F;
+    --ink:    #E8E9E1;
+    --muted:  #9AA094;
+    --rule:   #2C3128;
+    --signal: #8FB4FF;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-weight: 350;
+  font-size: 1.125rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+@media (min-width: 60rem) {
+  .page { padding-top: 8rem; padding-bottom: 9rem; }
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3.1rem, 11vw, 5.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.4rem;
+}
+
+.lede {
+  font-size: 1.32rem;
+  line-height: 1.5;
+  margin: 0 0 2.2rem;
+  max-width: 36ch;
+}
+
+.lede em { font-style: italic; color: var(--signal); }
+
+.channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.6rem;
+  font-family: var(--display);
+  font-size: 0.97rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.channels a {
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid var(--rule);
+  transition: border-color .15s, color .15s;
+}
+
+.channels a:hover { color: var(--signal); border-bottom-color: var(--signal); }
+
+.band { margin-top: 5.5rem; }
+
+.band > h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  margin: 0 0 1.75rem;
+}
+
+/* Research list */
+.work { border-top: 1px solid var(--rule); }
+
+.work-item {
+  padding: 1.45rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.work-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.work-name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.work-role {
+  display: block;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.work-year {
+  font-family: var(--display);
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.work-note {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.55;
+  max-width: 48ch;
+}
+
+/* Qualifications */
+.quals { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+
+.qual-item {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.qual-degree {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.qual-detail {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0.2rem 0 0;
+}
+
+/* Publications */
+.pubs {
+  border-top: 1px solid var(--rule);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pub-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pub-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+}
+
+.pub-meta {
+  font-size: 0.98rem;
+  color: var(--muted);
+  margin: 0.3rem 0 0;
+}
+
+.pub-meta .venue { color: var(--signal); }
+
+/* Interests */
+.interests-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interests-list li {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 2rem;
+  color: var(--ink);
+}
+
+/* Prose */
+.prose p { margin: 0 0 1.15rem; max-width: 62ch; }
+.prose p:last-child { margin-bottom: 0; }
+.prose a { color: var(--signal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Sign off */
+.signoff a.mail {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--signal);
+  line-height: 1.3;
+}
+
+.signoff a.mail:hover { color: var(--signal); }
+
+.colophon {
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+a:focus-visible {
+  outline: 2.5px solid var(--signal);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .75s cubic-bezier(.2,.7,.3,1) backwards; }
+  .rise:nth-child(1) { animation-delay: .04s; }
+  .rise:nth-child(2) { animation-delay: .13s; }
+  .rise:nth-child(3) { animation-delay: .22s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <header class="hero">
+    <h1 class="rise">Tuhin Basu</h1>
+    <p class="lede rise">
+      MSE student in <em>Mechanical Engineering</em> at Johns Hopkins,
+      working on visuotactile sensing and contact-rich robotic manipulation.
+    </p>
+    <ul class="channels rise">
+      <li><a href="mailto:tbasu3@jh.edu">Email</a></li>
+    </ul>
+  </header>
+
+  <!-- ======== RESEARCH ======== -->
+  <section class="band">
+    <h2>Research</h2>
+    <div class="work">
+
+      <div class="work-item">
+        <div class="work-head">
+          <span class="work-name">
+            SciPhy Lab, Johns Hopkins
+            <span class="work-role">MSE Researcher · Advisor: Dr. Krishna Murthy Jatavallabhula</span>
+          </span>
+          <span class="work-year">2026 – present</span>
+        </div>
+        <p class="work-note">
+          Calibrating and characterizing an in-house tactile sensor, running object-classification
+          and slip-detection experiments, and implementing tactile-enabled closed-loop controllers
+          on a UR5 arm. Associated work is under review at ICRA 2027 and accepted for demonstration at CoRL 2026.
+        </p>
+      </div>
+
+      <div class="work-item">
+        <div class="work-head">
+          <span class="work-name">
+            IHFC, IIT Delhi
+            <span class="work-role">READY Intern</span>
+          </span>
+          <span class="work-year">2024 – 2025</span>
+        </div>
+        <p class="work-note">
+          Built a novel rotary single/double inverted pendulum platform (S-DRIP), including its
+          data-acquisition system, and supported simulation-based testing.
+        </p>
+      </div>
+
+      <div class="work-item">
+        <div class="work-head">
+          <span class="work-name">
+            IIT Delhi
+            <span class="work-role">Research Intern · Advisors: Prof. S. K. Saha, Dr. R. G. Chittawadigi</span>
+          </span>
+          <span class="work-year">2023 – 2024</span>
+        </div>
+        <p class="work-note">
+          Studied eigenvalue-based versus numerical methods for inverse kinematics of 6-axis serial
+          manipulators and developed new IK modules for IIT Delhi's RoboAnalyzer software. Presented at IPROMM 2024.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======== PUBLICATIONS ======== -->
+  <section class="band">
+    <h2>Publications</h2>
+    <ul class="pubs">
+
+      <li class="pub-item">
+        <div class="pub-title">Tactile-sensor paper (name to be released)</div>
+        <p class="pub-meta">Submitted to <span class="venue">ICRA 2027</span> (under review) · demonstration accepted at CoRL 2026</p>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Investigation and Testing of Predictive Modelling for Automobile Safety</div>
+        <p class="pub-meta">T. Basu, V. Panwar, S. Nair, A. Solank · <span class="venue">ICMME 2025</span></p>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Generic Inverse Kinematics for 6-axis Serial Manipulators with Prismatic and Revolute Joints in RoboAnalyzer</div>
+        <p class="pub-meta">T. Basu, A. Dan, R. G. Chittawadigi · <span class="venue">IPROMM 2024</span></p>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-title">Investigating the Feasibility of Basalt Fiber as a Carbon Fiber Substitute in Composites for Automotive Applications</div>
+        <p class="pub-meta">N. Kant, S. Roy, O. Vinayak, R. Dandriyal, J. Rao, T. Basu, R. Gupta, P. Singh · <span class="venue">Journal of Polymer &amp; Composites, 2024</span></p>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ======== QUALIFICATIONS ======== -->
+  <section class="band">
+    <h2>Qualifications</h2>
+    <div class="quals">
+
+      <div class="qual-item">
+        <div class="qual-degree">MSE, Mechanical Engineering</div>
+        <p class="qual-detail">Johns Hopkins University · expected May 2027</p>
+      </div>
+
+      <div class="qual-item">
+        <div class="qual-degree">B.Tech, Mechanical Engineering</div>
+        <p class="qual-detail">Delhi Technological University · 2025 · CGPA 8.24 / 10</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======== INTERESTS ======== -->
+  <section class="band">
+    <h2>Interests</h2>
+    <ul class="interests-list">
+      <li>Visuotactile sensing</li>
+      <li>Contact-rich manipulation</li>
+      <li>Imitation &amp; policy learning</li>
+      <li>Closed-loop control</li>
+      <li>Tactile calibration</li>
+      <li>Robot kinematics</li>
+    </ul>
+  </section>
+
+  <!-- ======== ABOUT ======== -->
+  <section class="band prose">
+    <h2>About</h2>
+    <p>
+      I'm a mechanical engineering graduate student at Johns Hopkins, in the SciPhy Lab, where I
+      work on high-resolution tactile sensing and learning-based methods for contact-rich
+      manipulation. Right now I'm building an evaluation system that compares tactile sensors
+      across a range of dexterous tasks.
+    </p>
+    <p>
+      Before Hopkins I studied mechanical engineering at DTU in New Delhi and did research on
+      inverse kinematics at IIT Delhi and inverted-pendulum platforms at IHFC. I'm aiming toward a
+      PhD in visuotactile manipulation.
+    </p>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section class="band signoff">
+    <h2>Get in touch</h2>
+    <a class="mail" href="mailto:tbasu3@jh.edu">tbasu3@jh.edu</a>
+    <p class="colophon">Last updated October 2026.</p>
+  </section>
+
+</main>
+</body>
+</html>
